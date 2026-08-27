@@ -13,6 +13,8 @@ model Store {
   email     String   @unique
   createdAt DateTime @default(now())
   orders    Order[]
+
+  @@map("Store") 
 }
 
 model ShippingRate {
