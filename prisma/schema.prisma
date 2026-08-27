@@ -1,0 +1,36 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Store {
+  id        String   @id @default(uuid())
+  name      String
+  email     String   @unique
+  createdAt DateTime @default(now())
+  orders    Order[]
+}
+
+model ShippingRate {
+  id        Int      @id @default(autoincrement())
+  region    String
+  commune   String   @unique
+  baseCost  Float    @map("base_cost")
+}
+
+model Order {
+  id                 String   @id @default(uuid())
+  storeId            String   @map("store_id")
+  store              Store    @relation(fields: [storeId], references: [id])
+  recipientName      String   @map("recipient_name")
+  recipientAddress   String   @map("recipient_address")
+  destinationCommune String   @map("destination_commune")
+  totalCost          Float    @map("total_cost")
+  status             String   @default("Creado") // Creado, En Tránsito, Entregado
+  trackingCode       String   @unique @map("tracking_code")
+  createdAt          DateTime @default(now())
+}
