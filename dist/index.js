@@ -60,6 +60,40 @@ app.post('/api/store', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
+//crear tarifa de envio
+app.post('/api/shippingstore', async (req, res) => {
+    try {
+        const { region, commune, baseCost } = req.body;
+        const shippingRate = await prisma.shippingRate.create({ data: { region, commune, baseCost } });
+        res.status(201).json(shippingRate);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
+//crear orden
+// Crear orden
+app.post('/api/orders', async (req, res) => {
+    try {
+        const { storeId, recipientName, recipientAddress, destinationCommune, totalCost, trackingCode } = req.body;
+        const order = await prisma.order.create({
+            data: {
+                storeId,
+                recipientName,
+                recipientAddress,
+                destinationCommune,
+                totalCost,
+                trackingCode
+            }
+        });
+        res.status(201).json(order);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
 // probar la logistida de la api mediante thunder
 app.get('/', (req, res) => {
     res.json({ message: 'API de logística funcionando correctamente' });
