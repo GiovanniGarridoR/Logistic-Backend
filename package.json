@@ -18,7 +18,9 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "pdfkit": "^0.20.1",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "prisma": "^5.22.0",
+    "tsc": "^2.0.4"
   },
   "devDependencies": {
     "@types/cors": "^2.8.19",
