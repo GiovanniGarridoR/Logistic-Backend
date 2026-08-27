@@ -48,6 +48,17 @@ app.post('/api/orders', async (req, res) => {
         return res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
+//crear tienda 
+app.post('api/stores', async (req, res) => {
+    try {
+        const { name, email } = req.body;
+        const store = await prisma.store.create({ data: { name, email } });
+        res.status(201).json(store);
+    }
+    catch (error) {
+        res.status(500).json({ error: 'error al crear la tienda' });
+    }
+});
 // probar la logistida de la api mediante thunder
 app.get('/', (req, res) => {
     res.json({ message: 'API de logística funcionando correctamente' });
