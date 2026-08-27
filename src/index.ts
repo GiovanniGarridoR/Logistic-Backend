@@ -2,6 +2,9 @@ import express from "express";
 import cors from "cors";
 import { PrismaClient } from "@prisma/client";
 import PDFDocument from 'pdfkit';
+import { error } from "node:console";
+
+
 
 const prisma = new PrismaClient();
 const app = express();
@@ -48,6 +51,16 @@ app.post('/api/orders', async (req: any, res: any) => {
   } catch (error) {
     console.error('ERROR EN EL SERVIDOR:', error);
     return res.status(500).json({ error: 'Error interno del servidor' });
+  }
+});
+//crear tienda 
+app.post('api/stores', async (req, res)=>{
+  try{
+    const {name, email} = req.body;
+    const store = await prisma.store.create({data:{name,email}});
+    res.status(201).json(store);
+  }catch (error){
+    res.status(500).json({error:'error al crear la tienda' });
   }
 });
 // probar la logistida de la api mediante thunder
