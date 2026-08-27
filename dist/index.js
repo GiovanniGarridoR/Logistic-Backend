@@ -48,6 +48,10 @@ app.post('/api/orders', async (req, res) => {
         return res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
+// probar la logistida de la api mediante thunder
+app.get('/', (req, res) => {
+    res.json({ message: 'API de logística funcionando correctamente' });
+});
 app.patch('/api/orders/:id/status', async (req, res) => {
     try {
         const { id } = req.params;
