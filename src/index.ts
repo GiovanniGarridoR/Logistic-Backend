@@ -54,7 +54,7 @@ app.post('/api/orders', async (req: any, res: any) => {
   }
 });
 //crear tienda 
-app.post('/api/stores', async (req, res)=>{
+app.post('/api/store', async (req, res)=>{
   try{
     const {name, email} = req.body;
     const store = await prisma.store.create({data:{name,email}});
