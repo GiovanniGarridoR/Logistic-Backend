@@ -56,7 +56,8 @@ app.post('/api/store', async (req, res) => {
         res.status(201).json(store);
     }
     catch (error) {
-        res.status(500).json({ error: 'error al crear la tienda' });
+        console.error(error);
+        res.status(500).json({ error: error.message });
     }
 });
 // probar la logistida de la api mediante thunder

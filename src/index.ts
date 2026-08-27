@@ -59,10 +59,10 @@ app.post('/api/store', async (req, res)=>{
     const {name, email} = req.body;
     const store = await prisma.store.create({data:{name,email}});
     res.status(201).json(store);
-  }catch (error){
-    res.status(500).json({error:'error al crear la tienda' });
-  }
-});
+  } catch (error: any) {
+  console.error(error);
+  res.status(500).json({ error: error.message });
+}});
 // probar la logistida de la api mediante thunder
 app.get('/', (req, res) => {
   res.json({ message: 'API de logística funcionando correctamente' });
