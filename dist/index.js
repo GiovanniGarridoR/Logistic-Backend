@@ -61,7 +61,7 @@ app.post('/api/store', async (req, res) => {
     }
 });
 //crear tarifa de envio
-app.post('/api/shippingstore', async (req, res) => {
+app.post('/api/shippingrate', async (req, res) => {
     try {
         const { region, commune, baseCost } = req.body;
         const shippingRate = await prisma.shippingRate.create({ data: { region, commune, baseCost } });
@@ -74,7 +74,7 @@ app.post('/api/shippingstore', async (req, res) => {
 });
 //crear orden
 // Crear orden
-app.post('/api/orders', async (req, res) => {
+app.post('/api/order', async (req, res) => {
     try {
         const { storeId, recipientName, recipientAddress, destinationCommune, totalCost, trackingCode } = req.body;
         const order = await prisma.order.create({
