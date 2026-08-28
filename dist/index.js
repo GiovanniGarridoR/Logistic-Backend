@@ -72,7 +72,6 @@ app.post('/api/shippingrate', async (req, res) => {
         res.status(500).json({ error: error.message });
     }
 });
-//crear orden
 // Crear orden
 app.post('/api/order', async (req, res) => {
     try {
@@ -191,5 +190,40 @@ app.get('/api/orders/:id/label', async (req, res) => {
     catch (error) {
         console.error(error);
         return res.status(500).json({ error: 'Error al generar la etiqueta PDF' });
+    }
+});
+// Obtener todas las tiendas
+app.get('/api/stores', async (req, res) => {
+    try {
+        const stores = await prisma.store.findMany();
+        res.json(stores);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
+// Obtener todas las tarifas de envío
+app.get('/api/shipping-rates', async (req, res) => {
+    try {
+        const rates = await prisma.shippingRate.findMany();
+        res.json(rates);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
+// Obtener todas las órdenes (incluyendo los datos de su tienda asociada)
+app.get('/api/orders', async (req, res) => {
+    try {
+        const orders = await prisma.order.findMany({
+            include: { store: true }
+        });
+        res.json(orders);
+    }
+    catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
     }
 });
