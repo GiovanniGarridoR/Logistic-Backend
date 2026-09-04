@@ -217,7 +217,7 @@ app.get('/api/orders/:id/label', async (req: any, res: any) => {
 });
 
 // Obtener todas las tiendas
-app.get('/api/store', async (req, res) => {
+app.get('/api/stores', async (req, res) => {
   try {
     const stores = await prisma.store.findMany();
     res.json(stores);
@@ -228,7 +228,7 @@ app.get('/api/store', async (req, res) => {
 });
 
 // Obtener todas las tarifas de envío
-app.get('/api/shipping-rate', async (req, res) => {
+app.get('/api/shippingrates', async (req, res) => {
   try {
     const rates = await prisma.shippingRate.findMany();
     res.json(rates);
@@ -239,7 +239,7 @@ app.get('/api/shipping-rate', async (req, res) => {
 });
 
 // Obtener todas las órdenes (incluyendo los datos de su tienda asociada)
-app.get('/api/order', async (req, res) => {
+app.get('/api/orders', async (req, res) => {
   try {
     const orders = await prisma.order.findMany({
       include: { store: true }
