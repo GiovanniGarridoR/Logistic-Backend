@@ -29,12 +29,14 @@
     <section>
         <h2>Crear Orden</h2>
         <form id="orderForm">
-            <input type="text" name="orderStoreId" id="Store ID (UUID de la tienda)"required>
-            <input type="text" name="recipientName" id="Nombre del Destinatario"required>
-            <input type="text" name="recipientAddress" id="Dirección"required>
-            <input type="text" name="destinationCommune" id="Comuna de Destino"required>
-            <input type="number" name="totalCost" id="Costo Total ($)"required>
-            <input type="text" name="trackingCode" id="Código de Seguimiento"required> 
+            
+            <input type="text" name="orderStoreId" id="Store ID (UUID de la tienda)"placeholder = "Id de la tienda"   required>
+            <input type="text" name="recipientName" id="Nombre del Destinatario"placeholder = "nombre Destinatario"   required>
+            <input type="text" name="recipientAddress" id="Dirección"placeholder = "Dirección"   required>
+            <input type="text" name="destinationCommune" id="Comuna de Destino"placeholder = "Comuna de Destino"   required>
+            <input type="number" name="totalCost" id="Costo Total ($)"placeholder = "Costo total"   required>
+            <input type="text" name="trackingCode" id="Código de Seguimiento"placeholder = "Codigo de Seguimiento"   required> 
+            
         </form>
         <h3>ordenes registradas</h3>
         <button onclick="loadOrders()">Actualizar lista</button>

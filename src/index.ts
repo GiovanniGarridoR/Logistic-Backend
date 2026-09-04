@@ -218,13 +218,13 @@ app.get('/api/orders/:id/label', async (req: any, res: any) => {
 
 // Obtener todas las tiendas
 app.get('/api/stores', async (req, res) => {
-  try {
-    const stores = await prisma.store.findMany();
-    res.json(stores);
-  } catch (error: any) {
-    console.error(error);
-    res.status(500).json({ error: error.message });
-  }
+    try {
+        const stores = await prisma.store.findMany();
+        res.json(stores);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Error al obtener las tiendas' });
+    }
 });
 
 // Obtener todas las tarifas de envío
