@@ -11,6 +11,7 @@ const prisma = new client_1.PrismaClient();
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
+app.use(express_1.default.static('public'));
 // 1. Crear un pedido y calcular envío según la comuna
 app.post('/api/orders', async (req, res) => {
     console.log('1. ¡Llegó la petición al backend!', req.body);

@@ -11,6 +11,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'));
 
 // 1. Crear un pedido y calcular envío según la comuna
 app.post('/api/orders', async (req: any, res: any) => {

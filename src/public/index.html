@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de envio y tienda</title>
+    <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <h1>Panel de control de envios</h1>
+    <!--Seccion Tiendas-->
+
+    <section>
+        <h2>Crear tiendas</h2>
+        <form id="storeForm">
+            <input type="text" id="storeName" placeholder="Nombre de la tienda" required>
+            <input type="email" id="storeEmail" placeholder="Correo de contacto" required>
+            <button type="submit"> Guardar Tienda</button>
+        </form>
+        <h3>Tiendas registradas</h3>
+        <button onclick="loadStores()">Actualizar lista</button>
+        <table id="storesTable">
+            <thead><tr><th>ID</th><th>Nombre</th><th>Email</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <!--Seccion ordenes-->
+    <section>
+        <h2>Crear Orden</h2>
+        <form id="orderForm">
+            <input type="text" name="orderStoreId" id="Store ID (UUID de la tienda)"required>
+            <input type="text" name="recipientName" id="Nombre del Destinatario"required>
+            <input type="text" name="recipientAddress" id="Dirección"required>
+            <input type="text" name="destinationCommune" id="Comuna de Destino"required>
+            <input type="number" name="totalCost" id="Costo Total ($)"required>
+            <input type="text" name="trackingCode" id="Código de Seguimiento"required> 
+        </form>
+        <h3>ordenes registradas</h3>
+        <button onclick="loadOrders()">Actualizar lista</button>
+        <table id="ordersTable">
+            <thead><tr><th>Tracking</th><th>Destinatario</th><th>Comuna</th><th>Total</th></tr></thead>
+            <tbody></tbody>
+        </table>
+    </section>
+    <script src="Scripts.js"></script>
+</body>
+</html>
