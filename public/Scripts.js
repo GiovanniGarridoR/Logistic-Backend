@@ -11,7 +11,7 @@ const API_URL = '';
                 headers: {'content-type': 'application/json'},
                 body: JSON.stringify({name, email})
             });
-            if (res, ok){
+            if (res.ok){
                 alert('¡Tienda creada con exito!')
                 loadStores();
                 document.getElementById('storeForm').reset();
@@ -23,9 +23,9 @@ const API_URL = '';
         async function loadStores() {
             const res = await fetch('/api/store');
             const store = await res.json();
-            const tbody = document.querySelector('storesTable tbody');
+            const tbody = document.querySelector('#storesTable tbody');
             tbody.innerHTML = '';
-            store.array.forEach(s => {
+            store.forEach(s => {
                  tbody.innerHTML += '<tr><td>${s.id}</td><td>${s.name}</td><td>${s.email}</td></tr>`'                
             });
             
