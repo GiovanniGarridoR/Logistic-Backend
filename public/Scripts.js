@@ -21,14 +21,18 @@ const API_URL = '';
         });
         // cargar tienda
         async function loadStores() {
-            const res = await fetch('/api/store');
+            const res = await fetch('/api/stores');
             const store = await res.json();
             const tbody = document.querySelector('#storesTable tbody');
             tbody.innerHTML = '';
-            store.forEach(s => {
-                 tbody.innerHTML += '<tr><td>${s.id}</td><td>${s.name}</td><td>${s.email}</td></tr>`'                
-            });
-            
+            // Validación de  respuesta antes de recorrerlo
+            if (Array.isArray(store)) {
+                store.forEach(s => {
+                    tbody.innerHTML += `<tr><td>${s.id}</td><td>${s.name}</td><td>${s.email}</td></tr>`;
+                });
+                } else {
+                    console.error("El servidor no devolvió un arreglo:", store);
+                }     
         }
 
         // crear orden
