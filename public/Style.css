@@ -1,23 +1,23 @@
 body {
     font-family: Arial, sans-serif;
     max-width: 900px;
-    margin: 30px auto;
+    margin: 20px auto;
     padding: 0 20px;
     background: #f4f4f9;
-    color: #333;
+    color: #000000;
 }
 
 section {
-    background: white;
+    background: rgb(243, 241, 241);
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 h2 {
     margin-top: 0;
-    color: #007bff;
+    color: #315172;
 }
 
 input,
@@ -32,7 +32,7 @@ select {
 }
 
 button {
-    background: #007bff;
+    background: #315172;
     color: white;
     border: none;
     padding: 10px 15px;
@@ -55,7 +55,7 @@ td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: left;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 th {
